@@ -8,3 +8,4 @@ persons_split = re.split(r'\W', persons_ref)
 while "" in persons_split:
     persons_split.remove('')
 persons_dict = dict(zip(persons_split[::2], persons_split[1::2]))
+print(persons_dict)
