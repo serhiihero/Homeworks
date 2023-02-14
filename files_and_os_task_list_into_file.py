@@ -14,7 +14,6 @@ import os
 import random
 import operator
 
-
 if __name__ == '__main__':
     list_of_tuples = []
     data = 0
@@ -30,6 +29,8 @@ if __name__ == '__main__':
         list_of_tuples.append(
             (left_operand, right_operand, math_key))
         data += 1
+
+    print(list_of_tuples)
     os.makedirs("./test/data")
     with open('./test/data/text_file.txt', 'w') as file:
         file.write('\n'.join('{} {} {}'.format(key[0], key[1], key[2]) for key in list_of_tuples))
