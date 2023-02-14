@@ -6,7 +6,13 @@
 # Describe the function in the attached file in such a way that all checks in the __main__ task_1 block are performed correctly.
 # DO NOT CALL THE FUNCTION YOURSELF I HAVE ALREADY DONE THIS IN "assert" STATEMENTS
 
+import doctest
+
+
 def arithmetic(left_operand: int, right_operand: int, operation: str) -> int | float | str:
+    """
+        Apply arithmetic operation for provided left and right operands
+    """
     if operation == '+':
         return left_operand + right_operand
     elif operation == '-':
