@@ -10,4 +10,3 @@ def print_func(*args, **kwargs):
 
 if __name__ == '__main__':
     print_func('Hello World')
-
