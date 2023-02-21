@@ -1,19 +1,27 @@
 # Implement your realization of the function filter
+from typing import Callable
 
 filtered_data = []
 
 
-def filter_func(data_to_filter):
+def filter_for_allowed_types(iterable):
+    for data in iterable:
+        allowed_types = isinstance(data, (str, int, float))
+        if allowed_types:
+            filtered_data.append(data)
+
+
+def custom_filter(callback: Callable, iterable):
     """
-    Function which allows to filter data
-    :param data_to_filter: incoming data which have to be filtered
-    :return:
+    Custom filter func which process data
+    :param callback: allows to call needed func with diff types
+    :param iterable: data which needs to be filtered
     """
-    for iterable_data in data_to_filter:
-        if isinstance(iterable_data, (float, int, bool, str)):
-            filtered_data.append(iterable_data)
+    return callback(iterable)
 
 
 if __name__ == '__main__':
-    filter_func([2, 5, 6, 7, [1, 2, 3], ("One", "Two"), 22, "sate", True, 2.2, 5, 101, {"name": "David"}])
+    custom_filter(filter_for_allowed_types,
+                  [2, 5, 6, 7, [1, 2, 3], ("One", "Two"), 22, "sate", True, 2.2, 5, 101,
+                   {"name": "David"}])
     print(filtered_data)
