@@ -2,7 +2,7 @@
 from typing import Callable
 
 numbers = [20, 50, 600, 700, [1, 2, 3], ("One", "Two"), 22, "543", True, 2.2, 500.5, 101,
-                   {"name": "David"}]
+           {"name": "David"}]
 filtered_data = []
 
 
