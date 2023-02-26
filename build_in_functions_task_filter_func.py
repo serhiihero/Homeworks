@@ -1,14 +1,13 @@
 # Implement your realization of the function filter
 from typing import Callable
 
-filtered_data = []
-
 
 def filter_for_allowed_types(iterable):
+    filtered_data = []
     for data in iterable:
-        allowed_types = isinstance(data, (str, int, float))
-        if allowed_types:
+        if isinstance(data, (int, float)) and data < 5 and not isinstance(data, bool):
             filtered_data.append(data)
+    return filtered_data
 
 
 def custom_filter(callback: Callable, iterable):
@@ -21,7 +20,7 @@ def custom_filter(callback: Callable, iterable):
 
 
 if __name__ == '__main__':
-    custom_filter(filter_for_allowed_types,
-                  [2, 5, 6, 7, [1, 2, 3], ("One", "Two"), 22, "sate", True, 2.2, 5, 101,
-                   {"name": "David"}])
-    print(filtered_data)
+    result = custom_filter(filter_for_allowed_types,
+                           [2, 5, 6, 7, [1, 2, 3], ("One", "Two"), 22, "sate", True, 2.2, 5, 101,
+                            {"name": "David", "age": 3}])
+    print(result)
