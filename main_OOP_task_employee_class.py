@@ -2,7 +2,7 @@
 
 class Employee:
 
-    def __init__(self, employee_name, employee_sex, employee_age, employee_education, employment):
+    def __init__(self, employee_name: str, employee_sex: str, employee_age: int, employee_education: str, employment: str):
         self.__employee_name = employee_name
         self.__employee_sex = employee_sex
         self.__employee_age = employee_age

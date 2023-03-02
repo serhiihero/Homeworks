@@ -2,7 +2,7 @@
 
 class Toshiba:
 
-    def __init__(self, company_name, founded_year, founder_name, employees, revenue):
+    def __init__(self, company_name: str, founded_year: int, founder_name: str, employees: int, revenue: int):
         self.__company_name = company_name
         self.__founded_year = founded_year
         self.__founder_name = founder_name
