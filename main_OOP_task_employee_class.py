@@ -1,6 +1,16 @@
 # Create a class describing any company. For example, Toshiba or Apple
 
 class Employee:
+    MIN_EMPLOYEE_NAME_LENGTH = 1
+    MAX_EMPLOYEE_NAME_LENGTH = 20
+    MIN_EMPLOYEE_SEX_LENGTH = 1
+    MAX_EMPLOYEE_SEX_LENGTH = 20
+    MIN_EMPLOYEE_AGE = 18
+    MAX_EMPLOYEE_AGE = 60
+    MIN_EMPLOYEE_EDUCATION_LENGTH = 1
+    MAX_EMPLOYEE_EDUCATION_LENGTH = 30
+    MIN_EMPLOYMENT_LENGTH = 1
+    MAX_EMPLOYMENT_LENGTH = 15
 
     def __init__(self, employee_name: str = None, employee_sex: str = None, employee_age: int = None,
                  employee_education: str = None, employment: str = None):
@@ -11,74 +21,87 @@ class Employee:
         self.__employment = employment
 
     @property
-    def name(self):
-        if isinstance(self.__employee_name, str) and len(self.__employee_name) <= 20:
-            return self.__employee_name
-        else:
-            raise TypeError('No longer than 20 letters expected for the employee name.')
+    def employee_name(self):
+        return self.__employee_name
 
-    @name.setter
-    def name(self, new_employee_name):
-        if isinstance(new_employee_name, str) and len(new_employee_name) <= 20:
+    @employee_name.setter
+    def employee_name(self, new_employee_name):
+        if self.is_valid_employee_name(new_employee_name):
             self.__employee_name = new_employee_name
         else:
             raise TypeError('No longer than 20 letters expected for the employee name.')
 
-    @property
-    def sex(self):
-        if isinstance(self.__employee_sex, str) and self.__employee_sex.lower() in ["male", "female"]:
-            return self.__employee_sex
-        else:
-            raise SyntaxError('Sex must be "male" or "female".')
+    @staticmethod
+    def is_valid_employee_name(employee_name):
+        return isinstance(employee_name,
+                          str) and Employee.MIN_EMPLOYEE_NAME_LENGTH <= len(
+            employee_name) <= Employee.MAX_EMPLOYEE_NAME_LENGTH
 
-    @sex.setter
-    def sex(self, employee_sex_change):
-        if isinstance(employee_sex_change, str) and employee_sex_change.lower() in ["male", "female"]:
+    @property
+    def employee_sex(self):
+        return self.__employee_sex
+
+    @employee_sex.setter
+    def employee_sex(self, employee_sex_change):
+        if self.is_valid_employee_sex(employee_sex_change):
             self.__employee_sex = employee_sex_change
         else:
-            raise SyntaxError('Sex must be "male" or "female".')
+            raise TypeError('Sex must be "male" or "female".')
+
+    @staticmethod
+    def is_valid_employee_sex(employee_sex):
+        return isinstance(employee_sex,
+                          str) and Employee.MIN_EMPLOYEE_SEX_LENGTH <= len(
+            employee_sex) <= Employee.MAX_EMPLOYEE_SEX_LENGTH and employee_sex.lower() in ["male", "female"]
 
     @property
-    def age(self):
-        if isinstance(self.__employee_age, int) and 18 <= self.__employee_age <= 60:
-            return self.__employee_age
-        else:
-            raise TypeError('Only over 18 and no over 60 are allowed.')
+    def employee_age(self):
+        return self.__employee_age
 
-    @age.setter
-    def age(self, employee_age_change):
-        if isinstance(employee_age_change, int) and 18 <= employee_age_change <= 60:
+    @employee_age.setter
+    def employee_age(self, employee_age_change):
+        if self.is_valid_employee_age(employee_age_change):
             self.__employee_age = employee_age_change
         else:
             raise TypeError('Only over 18 and no over 60 are allowed.')
 
-    @property
-    def education(self):
-        if isinstance(self.__employee_education, str) and len(self.__employee_education) <= 30:
-            return self.__employee_education
-        else:
-            raise TypeError('Education must be a string with no more than 30 characters.')
+    @staticmethod
+    def is_valid_employee_age(employee_age):
+        return isinstance(employee_age, int) and Employee.MIN_EMPLOYEE_AGE <= employee_age <= Employee.MAX_EMPLOYEE_AGE
 
-    @education.setter
-    def education(self, employee_education_change):
-        if isinstance(employee_education_change, str) and len(employee_education_change) <= 30:
+    @property
+    def employee_education(self):
+        return self.__employee_education
+
+    @employee_education.setter
+    def employee_education(self, employee_education_change):
+        if self.is_valid_employee_education(employee_education_change):
             self.__employee_education = employee_education_change
         else:
             raise TypeError('Education must be a string with no more than 30 characters.')
 
+    @staticmethod
+    def is_valid_employee_education(employee_education):
+        return isinstance(employee_education,
+                          str) and Employee.MIN_EMPLOYEE_EDUCATION_LENGTH <= len(
+            employee_education) <= Employee.MAX_EMPLOYEE_EDUCATION_LENGTH
+
     @property
     def employment(self):
-        if isinstance(self.__employment, str) and self.__employment.lower() in ["full-time", "part-time"]:
-            return self.__employment
-        else:
-            raise TypeError('Employment must be "full-time" or "part-time".')
+        return self.__employment
 
     @employment.setter
     def employment(self, employment_change):
-        if isinstance(employment_change, str) and employment_change.lower() in ["full-time", "part-time"]:
+        if self.is_valid_employment(employment_change):
             self.__employment = employment_change
         else:
             raise TypeError('Employment must be "full-time" or "part-time".')
+
+    @staticmethod
+    def is_valid_employment(employment):
+        return isinstance(employment,
+                          str) and Employee.MIN_EMPLOYMENT_LENGTH <= len(
+            employment) <= Employee.MAX_EMPLOYMENT_LENGTH and employment.lower() in ["full-time", "part-time"]
 
 
 if __name__ == '__main__':
