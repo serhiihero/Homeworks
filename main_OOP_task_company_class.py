@@ -2,7 +2,8 @@
 
 class Toshiba:
 
-    def __init__(self, company_name: str, founded_year: int, founder_name: str, employees: int, revenue: int):
+    def __init__(self, company_name: str = None, founded_year: int = None, founder_name: str = None,
+                 employees: int = None, revenue: int = None):
         self.__company_name = company_name
         self.__founded_year = founded_year
         self.__founder_name = founder_name
@@ -81,4 +82,4 @@ class Toshiba:
 
 
 if __name__ == '__main__':
-    result = Toshiba('Toshiba Corporation', 1882, 'Tanaka Hisashige', 100, 15000)
+    Toshiba('Toshiba Corporation', 1882, 'Tanaka Hisashige', 100, 15000)

@@ -2,7 +2,8 @@
 
 class Employee:
 
-    def __init__(self, employee_name: str, employee_sex: str, employee_age: int, employee_education: str, employment: str):
+    def __init__(self, employee_name: str = None, employee_sex: str = None, employee_age: int = None,
+                 employee_education: str = None, employment: str = None):
         self.__employee_name = employee_name
         self.__employee_sex = employee_sex
         self.__employee_age = employee_age
@@ -81,4 +82,4 @@ class Employee:
 
 
 if __name__ == '__main__':
-    result = Employee('Adel', 'female', 25, 'High', 'full-time')
+    Employee('Adel', 'female', 25, 'High', 'full-time')
