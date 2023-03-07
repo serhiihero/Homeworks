@@ -8,6 +8,6 @@ def number_remover(processed_content: str) -> str:
 
 
 if __name__ == '__main__':
-    with open('data.txt', 'r') as file:
+    with open('../data.txt', 'r') as file:
         data_file = file.read()
     print(number_remover(data_file))
