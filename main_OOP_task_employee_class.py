@@ -1,4 +1,10 @@
-# Create a class describing any company. For example, Toshiba or Apple
+# Create a class with a description of the worker. Any worker. employees.
+# I will evaluate the completeness of the described class and will withdraw points for everything unnecessary.
+# I want to see clean code. I expect to see clean code with annotations.
+# So far, no first-class connections with the second. In all methods,
+# I expect to see docstrings with a sane description.
+import datetime
+
 
 class Employee:
     MIN_EMPLOYEE_NAME_LENGTH = 1
@@ -102,6 +108,18 @@ class Employee:
         return isinstance(employment,
                           str) and Employee.MIN_EMPLOYMENT_LENGTH <= len(
             employment) <= Employee.MAX_EMPLOYMENT_LENGTH and employment.lower() in ["full-time", "part-time"]
+
+    @staticmethod
+    def calculate_age_of_employee(employee_age):
+        years_old = datetime.datetime.now().year - employee_age
+        return years_old
+
+    def short_user_introduction(self):
+        return f"{self.employee_name} has {self.employee_education} degree and pretend to work {self.employment}"
+
+    @classmethod
+    def add_new_employee(cls, employee_name, employment):
+        return cls(employee_name, employment)
 
 
 if __name__ == '__main__':

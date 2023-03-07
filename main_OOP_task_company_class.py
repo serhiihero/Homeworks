@@ -1,4 +1,6 @@
 # Create a class describing any company. For example, Toshiba or Apple
+import datetime
+
 
 class Toshiba:
     MIN_COMPANY_NAME_LENGTH = 1
@@ -95,6 +97,18 @@ class Toshiba:
     @staticmethod
     def is_valid_revenue_quantity(revenue):
         return isinstance(revenue, int | float) and Toshiba.MIN_REVENUE_QUANTITY <= revenue
+
+    @staticmethod
+    def calculate_company_age(founded_year):
+        company_age = datetime.datetime.now().year - founded_year
+        return company_age
+
+    def short_company_introduction(self):
+        return f"{self.company_name} created in {self.founded_year} and CEO of this company {self.founder_name}"
+
+    @classmethod
+    def add_new_company(cls, company_name, founder_name):
+        return cls(company_name=company_name, founder_name=founder_name)
 
 
 if __name__ == '__main__':
