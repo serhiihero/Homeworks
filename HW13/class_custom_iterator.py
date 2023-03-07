@@ -5,7 +5,7 @@ from random import randint
 
 class CustomIterator:
 
-    def __init__(self, sequence, start_index: int = None, end_index: int = None):
+    def __init__(self, sequence: int = None, start_index: int = None, end_index: int = None):
         self.__sequence = sequence
         self.__start_index = start_index
         self.__end_index = end_index
