@@ -119,7 +119,7 @@ class Employee:
 
     @classmethod
     def add_new_employee(cls, employee_name, employment):
-        return cls(employee_name, employment)
+        return cls(employee_name=employee_name, employment=employment)
 
 
 if __name__ == '__main__':
