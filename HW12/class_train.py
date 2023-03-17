@@ -5,7 +5,7 @@ class Train:
     def __len__(self):
         return len(self.wagons)
 
-    def add_wagon(self, new_wagon):
+    def add_wagon(self, new_wagon: int):
         self.wagons.append(new_wagon)
         return self
 
