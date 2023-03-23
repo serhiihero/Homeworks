@@ -4,20 +4,19 @@ from random import randint
 
 
 class CustomIterator:
-
-    def __init__(self, sequence: int = None, start_position: int = None, end_position: int = None):
-        self._sequence = sequence
-        self._start_position = start_position
-        self._end_position = end_position
-        self._current_position = start_position
+    def __init__(self, sequence, start_index, end_index):
+        self.__sequence = sequence
+        self.__start_index = start_index
+        self.__end_index = end_index
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self._current_position < self._end_position:
-            value = self._sequence[self._current_position]
-            self._current_position += 1
+        if self.__start_index < self.__end_index and self.__start_index < len(self.__sequence) and len(
+                str(self.__start_index)) <= 1:
+            value = self.__sequence[self.__start_index]
+            self.__start_index += 1
             return value
         else:
             raise StopIteration
